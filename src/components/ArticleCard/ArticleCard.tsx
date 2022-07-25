@@ -6,7 +6,6 @@ import {
   ArticleTagsContainer,
   ArticleTag,
   ArticleFooter,
-  ArticleFooterSeperator,
 } from "./styles/ArticleCard.styles";
 
 type ArticleCardProps = {
