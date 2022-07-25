@@ -16,6 +16,7 @@ export type PostMeta = {
   excerpt: string;
   tags: string[];
   date: string;
+  dateTime: string;
 };
 
 export const getSlugs = (): string[] => {
@@ -66,6 +67,7 @@ export const getPostFromSlug = (slug: string): Post => {
       excerpt: data.excerpt ?? "",
       tags: data.tags.sort() ?? [],
       date: date.toString() ?? new Date().toString(),
+      dateTime: data.date.toString(),
     },
     content,
   };

@@ -67,7 +67,14 @@ const Home = ({ postsMeta }: { postsMeta: PostMeta[] }) => {
         </SectionContainer>
         <SectionContainer>
           {postsMeta.map((post) => (
-            <ArticleCard title={post.title} date={post.date} key={post.slug} />
+            <ArticleCard
+              title={post.title}
+              excerpt={post.excerpt}
+              date={post.date}
+              dateTime={post.dateTime}
+              tags={post.tags}
+              key={post.slug}
+            />
           ))}
         </SectionContainer>
       </MainContainer>

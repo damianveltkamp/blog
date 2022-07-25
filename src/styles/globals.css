@@ -35,6 +35,12 @@ h2 {
   line-height: 150%;
 }
 
+h3 {
+  margin: 0;
+  font-size: 1.563rem;
+  line-height: 150%;
+}
+
 p {
   line-height: 150%;
 }
