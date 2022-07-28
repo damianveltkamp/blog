@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const ArticleCardContainer = styled("div")`
-  background: #fff;
+  background: #efa35d;
   padding: 40px;
   color: #fff;
   border-radius: 10px;
