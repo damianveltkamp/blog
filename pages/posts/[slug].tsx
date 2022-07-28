@@ -8,14 +8,7 @@ import rehypeHighlight from "rehype-highlight";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { getPostFromSlug, getSlugs, PostMeta } from "../../src/api";
 import "highlight.js/styles/atom-one-dark.css";
-import {
-  MainContainer,
-  SectionContainer,
-  HeaderContainer,
-} from "../../pages/index";
-import { Icon } from "../../src/components/Icon/Icon";
-import DamianLogo from "../../src/icons/logo.svg";
-import GithubLogo from "../../src/icons/github-brands.svg";
+import { SectionContainer } from "../../pages/index";
 
 export type MDXPost = {
   source: MDXRemoteSerializeResult<
@@ -39,28 +32,10 @@ export default function PostPage({ post }: { post: MDXPost }) {
         {/*   content="Webdeveloper blog of Damian Veltkamp" */}
         {/* /> */}
       </Head>
-      <HeaderContainer>
-        <a
-          aria-label="Damian Veltkamp logo"
-          href="https://blog.damianveltkamp.tech/"
-        >
-          <Icon width="45px" icon={DamianLogo} />
-        </a>
-        <a
-          aria-label="Github logo"
-          href="https://github.com/damianveltkamp"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <Icon icon={GithubLogo} />
-        </a>
-      </HeaderContainer>
-      <MainContainer>
-        <SectionContainer>
-          <h1>{title}</h1>
-          <MDXRemote components={{ Image }} {...source} />
-        </SectionContainer>
-      </MainContainer>
+      <SectionContainer>
+        <h1>{title}</h1>
+        <MDXRemote components={{ Image }} {...source} />
+      </SectionContainer>
     </>
   );
 }
