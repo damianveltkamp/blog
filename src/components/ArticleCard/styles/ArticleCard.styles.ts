@@ -12,6 +12,7 @@ export const ArticleCardContainer = styled("a")`
 export const ArticleTitle = styled("h2")``;
 
 export const ArticleExcerpt = styled("h3")`
+  font-size: 1rem;
   margin-bottom: 20px;
 `;
 
@@ -25,10 +26,15 @@ export const ArticleDate = styled("time")`
   display: flex;
   align-items: center;
   font-weight: 500;
+
+  &:not(:last-child) {
+    margin-bottom: 15px;
+  }
 `;
 
 export const ArticleTagsContainer = styled("div")`
   display: flex;
+  flex-wrap: wrap;
   gap: 5px;
 `;
 

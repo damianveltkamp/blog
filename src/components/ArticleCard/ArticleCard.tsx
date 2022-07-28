@@ -30,9 +30,9 @@ export const ArticleCard = ({
     <Link href={`/posts/${slug}`} passHref={true}>
       <ArticleCardContainer>
         <ArticleTitle>{title}</ArticleTitle>
+        <ArticleDate dateTime={dateTime}>{date}</ArticleDate>
         <ArticleExcerpt>{excerpt}</ArticleExcerpt>
         <ArticleFooter>
-          <ArticleDate dateTime={dateTime}>{date}</ArticleDate>
           <ArticleTagsContainer>
             {tags.map((tag) => (
               <ArticleTag key={tag}>{tag}</ArticleTag>
