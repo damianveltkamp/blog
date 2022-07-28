@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   ArticleCardContainer,
   ArticleDate,
@@ -14,6 +15,7 @@ type ArticleCardProps = {
   date: string;
   dateTime: string;
   tags: string[];
+  slug: string;
 };
 
 export const ArticleCard = ({
@@ -22,19 +24,22 @@ export const ArticleCard = ({
   date,
   dateTime,
   tags,
+  slug,
 }: ArticleCardProps) => {
   return (
-    <ArticleCardContainer>
-      <ArticleTitle>{title}</ArticleTitle>
-      <ArticleExcerpt>{excerpt}</ArticleExcerpt>
-      <ArticleFooter>
-        <ArticleDate dateTime={dateTime}>{date}</ArticleDate>
-        <ArticleTagsContainer>
-          {tags.map((tag) => (
-            <ArticleTag key={tag}>{tag}</ArticleTag>
-          ))}
-        </ArticleTagsContainer>
-      </ArticleFooter>
-    </ArticleCardContainer>
+    <Link href={`/posts/${slug}`} passHref={true}>
+      <ArticleCardContainer>
+        <ArticleTitle>{title}</ArticleTitle>
+        <ArticleExcerpt>{excerpt}</ArticleExcerpt>
+        <ArticleFooter>
+          <ArticleDate dateTime={dateTime}>{date}</ArticleDate>
+          <ArticleTagsContainer>
+            {tags.map((tag) => (
+              <ArticleTag key={tag}>{tag}</ArticleTag>
+            ))}
+          </ArticleTagsContainer>
+        </ArticleFooter>
+      </ArticleCardContainer>
+    </Link>
   );
 };

@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
-export const ArticleCardContainer = styled("div")`
+export const ArticleCardContainer = styled("a")`
+  display: block;
   background: #efa35d;
   padding: 40px;
   color: #fff;

@@ -6,12 +6,13 @@ import { Icon } from "../src/components/Icon/Icon";
 import { getAllPosts, PostMeta } from "../src/api";
 import { ArticleCard } from "../src/components/ArticleCard/ArticleCard";
 
-const MainContainer = styled("main")`
+export const MainContainer = styled("main")`
   max-width: 680px;
   margin: 0 auto;
 `;
 
-const SectionContainer = styled("section")`
+export const SectionContainer = styled("section")`
+  position: relative;
   padding: 0 20px;
   &:not(:last-child) {
     margin-bottom: 60px;
@@ -24,7 +25,7 @@ const SectionContainer = styled("section")`
   }
 `;
 
-const HeaderContainer = styled("header")`
+export const HeaderContainer = styled("header")`
   display: flex;
   padding: 20px 20px;
   align-items: center;
@@ -73,6 +74,7 @@ const Home = ({ postsMeta }: { postsMeta: PostMeta[] }) => {
               date={post.date}
               dateTime={post.dateTime}
               tags={post.tags}
+              slug={post.slug}
               key={post.slug}
             />
           ))}
