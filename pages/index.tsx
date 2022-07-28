@@ -30,7 +30,7 @@ const Home = ({ postsMeta }: { postsMeta: PostMeta[] }) => {
 
       <SectionContainer>
         <h1>
-          Greetings, my name is Damian Veltkamp and this is my webdeveloper
+          Greetings, my name is Damian Veltkamp, and this is my web developer
           blog.
         </h1>
       </SectionContainer>
