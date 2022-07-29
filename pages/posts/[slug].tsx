@@ -19,18 +19,14 @@ export type MDXPost = {
 };
 
 export default function PostPage({ post }: { post: MDXPost }) {
-  console.log(post);
   const { source, meta } = post;
   const { title } = meta;
-  console.log(title);
+
   return (
     <>
       <Head>
         <title>{title}</title>
-        {/* <meta */}
-        {/*   name="description" */}
-        {/*   content="Webdeveloper blog of Damian Veltkamp" */}
-        {/* /> */}
+        <meta name="description" content={`Blog post about ${title}`} />
       </Head>
       <SectionContainer>
         <h1>{title}</h1>
