@@ -80,7 +80,7 @@ In order to publish your package to your local registry you can use this helper 
 This command runs the following script:
 
 ```bash
-  npm publish --@mws:registry=http://localhost:4873
+  npm publish --@ORG:registry=http://localhost:4873
 ```
 
 </ContentBlock>
@@ -98,7 +98,7 @@ In order to unpublish your package from your private registry you can use this h
 This command runs the following script:
 
 ```bash
-  npm unpublish --force @mws/mds --@mws:registry=http://localhost:4873
+  npm unpublish --force @ORG/PACKAGENAME --@ORG:registry=http://localhost:4873
 ```
 
 </ContentBlock>
@@ -112,7 +112,7 @@ In order to use the package from your local registry you first have to edit the 
 After you have commented out the registry inside the .npmrc file you can install your package with the following command:
 
 ```bash
-  yarn add --registry http://localhost:4873 @mws/mds
+  yarn add --registry http://localhost:4873 @ORG/PACKAGE_NAME
 ```
 
 After you are done testing do not forget to uncomment the registry inside your .npmrc file.
