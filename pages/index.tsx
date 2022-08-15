@@ -15,10 +15,7 @@ const Home = ({ postsMeta }: { postsMeta: PostMeta[] }) => {
       </Head>
 
       <ContentBlock>
-        <Heading lvl="h1">
-          Greetings, my name is Damian Veltkamp, and this is my web developer
-          blog.
-        </Heading>
+        <Heading lvl="h1">Writing about what interesets me.</Heading>
       </ContentBlock>
       <ContentBlock>
         {postsMeta.map((post) => (
