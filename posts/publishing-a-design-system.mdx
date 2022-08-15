@@ -20,6 +20,113 @@ other web developers on the project whilest working on the project.
 
 <ContentBlock>
 
+## Local package testing
+
+Before publishing your new package version, you would ideally test the package locally. This is
+possible with [Verdaccio](https://verdaccio.org/), a tool that lets you host your packages locally via a private proxy registry.
+
+</ContentBlock>
+
+<ContentBlock>
+
+### Starting your private proxy registry
+
+In order to start your private proxy registry, you will have to install Verdaccio as a global package. You can do this with yarn or npm:
+
+#### yarn
+
+```bash
+  yarn global add verdaccio
+```
+
+#### npm
+
+```bash
+  npm install --global verdaccio
+```
+
+After installing Verdaccio you can start your server by running this command in your terminal:
+
+```bash
+  verdaccio
+```
+
+Now there should be a server running on http://localhost:4873/ where you can see all the packages you have published to this private proxy registry.
+
+</ContentBlock>
+
+<ContentBlock>
+
+### Adding a user for your registry
+
+In order to be able to publish packages to your local registry you will have to create a user, you can do this with the following command:
+
+```bash
+  npm adduser --registry http://localhost:4873/
+```
+
+</ContentBlock>
+
+<ContentBlock>
+
+### Publishing to your private registry
+
+In order to publish your package to your local registry you can use this helper script:
+
+```bash
+  yarn test-local
+```
+
+This command runs the following script:
+
+```bash
+  npm publish --@mws:registry=http://localhost:4873
+```
+
+TODO add image here
+ALT TEXT: Your local package hosted on localhost:4873
+
+</ContentBlock>
+
+<ContentBlock>
+
+### Unpublishing your package from the private registry
+
+In order to unpublish your package from your private registry you can use this helper script:
+
+```bash
+  yarn test-local-reset
+```
+
+This command runs the following script:
+
+```bash
+  npm unpublish --force @mws/mds --@mws:registry=http://localhost:4873
+```
+
+</ContentBlock>
+
+<ContentBlock>
+
+### Using your local package in a project
+
+In order to use the package from your local registry you first have to edit the projects .npmrc file. This file should have a predefined registry in it that should be commented out, before trying to install a package from your local registry.
+
+TODO ADD IMAGE
+ALT TEXT: npmrc file inside maandag public project
+
+After you have commented out the registry inside the .npmrc file you can install your package with the following command:
+
+```bash
+  yarn add --registry http://localhost:4873 @mws/mds
+```
+
+After you are done testing do not forget to uncomment the registry inside your .npmrc file.
+
+</ContentBlock>
+
+<ContentBlock>
+
 ## Updating the CHANGELOG.md
 
 Most important before publishing the design system is keeping track of the
@@ -92,14 +199,14 @@ A bug fix is defined as an internal change that fixes incorrect behavior.
 
 Custom script to bump the patch version
 
-```
-bash yarn bump-patch-version
+```bash
+  yarn bump-patch-version
 ```
 
 The script above executes the following:
 
-```
-bash yarn version --patch && git push && git push --tags && yarn publish
+```bash
+  yarn version --patch && git push && git push --tags && yarn publish
 ```
 
 - yarn version updates the version inside the package.json and adds a git tag with the version it is being bumped to.
@@ -121,13 +228,13 @@ bash yarn version --patch && git push && git push --tags && yarn publish
 Custom script to bump the minor version
 
 ```bash
-yarn bump-minor-version
+  yarn bump-minor-version
 ```
 
 The script above executes the following:
 
 ```bash
-yarn version --minor && git push && git push --tags && yarn publish
+  yarn version --minor && git push && git push --tags && yarn publish
 ```
 
 </ContentBlock>
@@ -143,13 +250,13 @@ yarn version --minor && git push && git push --tags && yarn publish
 Custom script to bump the major version
 
 ```bash
-yarn bump-major-version
+  yarn bump-major-version
 ```
 
 The script above executes the following:
 
 ```bash
-yarn version --major && git push && git push --tags && yarn publish
+  yarn version --major && git push && git push --tags && yarn publish
 ```
 
 </ContentBlock>
