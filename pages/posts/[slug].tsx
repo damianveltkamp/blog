@@ -1,13 +1,18 @@
 import { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import rehypeSlug from "rehype-slug";
 import rehypeHighlight from "rehype-highlight";
 import { getPostFromSlug, getSlugs, PostMeta } from "../../src/api";
 import "highlight.js/styles/atom-one-dark.css";
-import { ContentBlock, Heading, Paragraph, List } from "@damianveltkamp/dvds";
+import {
+  Image,
+  ContentBlock,
+  Heading,
+  Paragraph,
+  List,
+} from "@damianveltkamp/dvds";
 import { MDXProvider } from "@mdx-js/react";
 
 export type MDXPost = {
@@ -90,10 +95,7 @@ export default function PostPage({ post }: { post: MDXPost }) {
           },
         }}
       >
-        <MDXRemote
-          components={{ Heading, Paragraph, Image, List, ContentBlock }}
-          {...source}
-        />
+        <MDXRemote components={{ ContentBlock, Image }} {...source} />
       </MDXProvider>
     </>
   );
