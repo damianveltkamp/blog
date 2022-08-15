@@ -28,7 +28,9 @@ export default function PostPage({ post }: { post: MDXPost }) {
         <title>{title}</title>
         <meta name="description" content={`Blog post about ${title}`} />
       </Head>
-      <Heading lvl="h1">{title}</Heading>
+      <ContentBlock>
+        <Heading lvl="h1">{title}</Heading>
+      </ContentBlock>
       <MDXProvider
         components={{
           h1({ children, id }) {
