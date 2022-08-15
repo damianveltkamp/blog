@@ -999,10 +999,10 @@
   resolved "https://registry.yarnpkg.com/@corex/deepmerge/-/deepmerge-4.0.29.tgz#af9debf07d7f6b0d2a9d04a266abf2c1418ed2f6"
   integrity sha512-q/yVUnqckA8Do+EvAfpy7RLdumnBy9ZsducMUtZTvpdbJC7azEf1hGtnYYxm0QfphYxjwggv6XtH64prvS1W+A==
 
-"@damianveltkamp/dvds@^0.1.27":
-  version "0.1.27"
-  resolved "https://registry.yarnpkg.com/@damianveltkamp/dvds/-/dvds-0.1.27.tgz#a11b5d0e235e00062a6970c459270a40b2693a41"
-  integrity sha512-v9alr4WTM4bonajOMUmhIqvpnFZMsT5+rCoY5aJXxbYwe2XgAHlLydqKvaTGfzJsevijZ7bRVVkkHheQINhM4Q==
+"@damianveltkamp/dvds@^0.1.28":
+  version "0.1.28"
+  resolved "https://registry.yarnpkg.com/@damianveltkamp/dvds/-/dvds-0.1.28.tgz#2043923c7166ed114ef433a2271c4a6b85e54935"
+  integrity sha512-Ja3tu5SX3vHmQEJcEFfYA+BgW0EOPMdVBdr7JtZXUsPH7iOBsV5wtPbXMDNf5iCZWaCXI+mA6lzmS9eZYtgulw==
   dependencies:
     "@babel/runtime" "^7.18.9"
     "@emotion/react" "^11.10.0"
