@@ -999,10 +999,10 @@
   resolved "https://registry.yarnpkg.com/@corex/deepmerge/-/deepmerge-4.0.29.tgz#af9debf07d7f6b0d2a9d04a266abf2c1418ed2f6"
   integrity sha512-q/yVUnqckA8Do+EvAfpy7RLdumnBy9ZsducMUtZTvpdbJC7azEf1hGtnYYxm0QfphYxjwggv6XtH64prvS1W+A==
 
-"@damianveltkamp/dvds@^0.1.24":
-  version "0.1.24"
-  resolved "https://registry.yarnpkg.com/@damianveltkamp/dvds/-/dvds-0.1.24.tgz#7675ed720beccd20621be69a051564a2d0300d99"
-  integrity sha512-zpEcvl9aWKtmMRXDyKMgXzrBxh1z9g1l25d3WmNVYpQBTE3gHVs18JswgijDYrh+8x3DCmqg+nhqYrWwc3ULVQ==
+"@damianveltkamp/dvds@^0.1.26":
+  version "0.1.26"
+  resolved "https://registry.yarnpkg.com/@damianveltkamp/dvds/-/dvds-0.1.26.tgz#8a5321864e91d8ba5e0621e22d7eca127d73105e"
+  integrity sha512-feLY+ZaLG1GHWcP6djPZZ+vkkPvurRvPigfQWE7THqbstoXGF9tjBe9m5YGPegEJffgB/CXhOwNqfKfdci7vhw==
   dependencies:
     "@babel/runtime" "^7.18.9"
     "@emotion/react" "^11.10.0"
@@ -1205,7 +1205,7 @@
     unist-util-visit "^4.0.0"
     vfile "^5.0.0"
 
-"@mdx-js/react@^2.0.0":
+"@mdx-js/react@^2.0.0", "@mdx-js/react@^2.1.2":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@mdx-js/react/-/react-2.1.2.tgz#02972f170cd3ad9113ce448245c5f636bb3e750d"
   integrity sha512-52e3DTJBrjsw3U51ZCdZ3N1IBaqnbzLIngCSXpKtiYiGr7PIqp3/P/+kym0MPTwBL/y9ZBmCieD8FyrXuEDrRw==

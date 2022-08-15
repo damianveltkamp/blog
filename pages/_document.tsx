@@ -37,6 +37,36 @@ export default function Document() {
             href="/favicon/safari-pinned-tab.svg"
             color="#5bbad5"
           />
+
+          <link
+            rel="preload"
+            href="/fonts/roboto/Roboto-Thin.ttf"
+            as="font"
+            crossOrigin=""
+          />
+
+          <link
+            rel="preload"
+            href="/fonts/roboto/Roboto-Regular.ttf"
+            as="font"
+            crossOrigin=""
+          />
+
+          <link
+            rel="preload"
+            href="/fonts/roboto/Roboto-Medium.ttf"
+            as="font"
+            crossOrigin=""
+          />
+
+          <link
+            rel="preload"
+            href="/fonts/roboto/Roboto-Bold.ttf"
+            as="font"
+            crossOrigin=""
+          />
+
+          <link rel="stylesheet" type="text/css" href="/fonts/fonts.css" />
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#1f2937" />
         </Head>

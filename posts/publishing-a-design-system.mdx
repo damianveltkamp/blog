@@ -8,89 +8,30 @@ date: 2022-07-28
 excerpt: What to do in order to successfully publish your design system
 ---
 
+<ContentBlock>
+
 ## What I have learned after creating a design system
 
-In this article, I have written down the essential steps that go into publishing your design system. I wrote most of this
-as documentation for other web developers on the project whilest working on the project.
+In this article, I have written down the essential steps that go into
+publishing your design system. I wrote most of this as documentation for
+other web developers on the project whilest working on the project.
 
-## Local package testing
+</ContentBlock>
 
-Before publishing your new package version you would ideally test out the package locally, this is possible with the
-[yarn link](https://classic.yarnpkg.com/en/docs/cli/link) command. This command creates a [symlink](https://en.wikipedia.org/wiki/Symbolic_link)
-inside of your ~/.config/yarn/link directory on your machine to your local package that you can use inside your project
-to test locally without publishing.
-
-### Creating a symlink for your package
-
-We start off by going into the separate design system package directory via our terminal, where we then run a custom yarn script
-that makes the design system package globally available for use in any project.
-
-**_Custom script to link your package_**
-
-```bash
-yarn link-package
-```
-
-**_The script above executes the following:_**
-
-```bash
-yarn build && yarn link
-```
-
-- yarn build builds your project so that it can be used
-- yarn link creates the symlink to your package
-
-### Connecting to your package symlink
-
-In order to connect to the design system package symlink, you first have to go inside the project you want to test the design system
-package in via your terminal. Once there you run a simple yarn link command as follows, where you replace the PACKAGE_NAME with
-the name of the package:
-
-```bash
-yarn link "PACKAGE_NAME"
-```
-
-Now that you have connected to the symlink you can start using your package locally as if you have installed it with yarn add.
-
-**_How yarn link "PACKAGE_NAME" works_**
-
-<Image
-  width="680px"
-  height="450px"
-  src="/images/how-yarn-link-works.png"
-  alt="Diagram of how yarn link works when connecting to a symlink."
-/>
-
-### Updating your package
-
-Since the connection is via a symlink pointing to your local package directory, if you want to make updates inside of your
-package and make them visible inside the project you are testing your package in, the only thing you have to do is run:
-
-```bash
-yarn build
-```
-
-### Disconnecting from your package symlink
-
-In order to disconnect from your package symlink the only thing you have to do is run this command:
-
-```bash
-yarn unlink "PACKAGE_NAME"
-```
-
-### Removing the Symlink
-
-In order to remove the symlink the only thing you have to do is run this command inside your package:
-
-```bash
-yarn unlink
-```
+<ContentBlock>
 
 ## Updating the CHANGELOG.md
 
-Most important before publishing the design system is keeping track of the changes that you want to be published.
-This ensures that everyone knows the state of the design system and what they can expect when updating their design system
-package. Check out [keepachangelog](https://keepachangelog.com/en/1.0.0/) and read up on everything there as well.
+Most important before publishing the design system is keeping track of the
+changes that you want to be published. This ensures that everyone knows the
+state of the design system and what they can expect when updating their
+design system package. Check out
+[keepachangelog](https://keepachangelog.com/en/1.0.0/) and read up on
+everything there as well.
+
+</ContentBlock>
+
+<ContentBlock>
 
 ### Guiding principles
 
@@ -102,6 +43,10 @@ Beneath are the most essential principles from the keepachangelog website:
 - The latest version comes first.
 - The release date of each version is displayed.
 
+</ContentBlock>
+
+<ContentBlock>
+
 ### Types of changes
 
 - Added: for new features.
@@ -111,21 +56,33 @@ Beneath are the most essential principles from the keepachangelog website:
 - Fixed: for any bug fixes.
 - Security: in case of vulnerabilities.
 
+</ContentBlock>
+
+<ContentBlock>
+
 ### Keeping an unreleased section
 
-To make our lives easier we should keep an Unreleased section at the top of the document to track all the upcoming changes.
-
-This serves two purposes:
+To make our lives easier we should keep an Unreleased section at the top of
+the document to track all the upcoming changes. This serves two purposes:
 
 - People can see what changes they might expect in upcoming releases
 - At release time, you can move the Unreleased section changes into a new release version section.
 
+</ContentBlock>
+
+<ContentBlock>
+
 ## Updating package version
 
-We use the [semver](https://semver.org/) way of updating the version of our packages, make sure to read up on semver so
-everyone understands what the version numbers mean.
+We use the [semver](https://semver.org/) way of updating the version of our
+packages, make sure to read up on semver so everyone understands what the
+version numbers mean. We use the [yarn
+version](https://classic.yarnpkg.com/en/docs/cli/version) command to update
+the version numbers.
 
-We use the [yarn version](https://classic.yarnpkg.com/en/docs/cli/version) command to update the version numbers.
+</ContentBlock>
+
+<ContentBlock>
 
 ### Bumping the patch number
 
@@ -133,21 +90,25 @@ We use the [yarn version](https://classic.yarnpkg.com/en/docs/cli/version) comma
 
 A bug fix is defined as an internal change that fixes incorrect behavior.
 
-**_Custom script to bump the patch version_**
+Custom script to bump the patch version
 
-```bash
-yarn bump-patch-version
+```
+bash yarn bump-patch-version
 ```
 
-**_The script above executes the following:_**
+The script above executes the following:
 
-```bash
-yarn version --patch && git push && git push --tags && yarn publish
+```
+bash yarn version --patch && git push && git push --tags && yarn publish
 ```
 
 - yarn version updates the version inside the package.json and adds a git tag with the version it is being bumped to.
 - git push pushes the updated package.json
 - git push --tags pushes the tags that have been added.
+
+</ContentBlock>
+
+<ContentBlock>
 
 ### Bumping the minor number
 
@@ -157,17 +118,21 @@ yarn version --patch && git push && git push --tags && yarn publish
 - It MAY include patch-level changes.
 - The patch version MUST be reset to 0 when the minor version is incremented.
 
-**_Custom script to bump the minor version_**
+Custom script to bump the minor version
 
 ```bash
 yarn bump-minor-version
 ```
 
-**_The script above executes the following:_**
+The script above executes the following:
 
 ```bash
 yarn version --minor && git push && git push --tags && yarn publish
 ```
+
+</ContentBlock>
+
+<ContentBlock>
 
 ### Bumping the Major number
 
@@ -175,14 +140,16 @@ yarn version --minor && git push && git push --tags && yarn publish
 - It MAY also include minor and patch-level changes.
 - Patch and minor versions MUST be reset to 0 when the major version is incremented.
 
-**_Custom script to bump the major version_**
+Custom script to bump the major version
 
 ```bash
 yarn bump-major-version
 ```
 
-**_The script above executes the following:_**
+The script above executes the following:
 
 ```bash
 yarn version --major && git push && git push --tags && yarn publish
 ```
+
+</ContentBlock>

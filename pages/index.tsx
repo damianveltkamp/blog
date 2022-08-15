@@ -39,7 +39,6 @@ const Home = ({ postsMeta }: { postsMeta: PostMeta[] }) => {
 
 export async function getStaticProps() {
   const postsMeta = getAllPosts().map((post) => post.meta);
-  console.log(postsMeta);
 
   return {
     props: { postsMeta },

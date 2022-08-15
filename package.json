@@ -9,9 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@damianveltkamp/dvds": "^0.1.24",
+    "@damianveltkamp/dvds": "^0.1.26",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
+    "@mdx-js/react": "^2.1.2",
     "glob": "^8.0.3",
     "gray-matter": "^4.0.3",
     "next": "12.2.3",
@@ -24,6 +25,7 @@
     "rehype-slug": "^5.0.1"
   },
   "devDependencies": {
+    "@emotion/babel-plugin": "^11.10.0",
     "@svgr/webpack": "^6.3.1",
     "@types/glob": "^7.2.0",
     "@types/node": "18.0.6",

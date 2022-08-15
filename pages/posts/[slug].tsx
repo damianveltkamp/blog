@@ -5,10 +5,10 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import rehypeSlug from "rehype-slug";
 import rehypeHighlight from "rehype-highlight";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { getPostFromSlug, getSlugs, PostMeta } from "../../src/api";
 import "highlight.js/styles/atom-one-dark.css";
-import { SectionContainer } from "../../pages/index";
+import { ContentBlock, Heading, Paragraph, List } from "@damianveltkamp/dvds";
+import { MDXProvider } from "@mdx-js/react";
 
 export type MDXPost = {
   source: MDXRemoteSerializeResult<
@@ -28,10 +28,71 @@ export default function PostPage({ post }: { post: MDXPost }) {
         <title>{title}</title>
         <meta name="description" content={`Blog post about ${title}`} />
       </Head>
-      <SectionContainer>
-        <h1>{title}</h1>
-        <MDXRemote components={{ Image }} {...source} />
-      </SectionContainer>
+      <Heading lvl="h1">{title}</Heading>
+      <MDXProvider
+        components={{
+          h1({ children, id }) {
+            return (
+              <Heading id={id} lvl="h1">
+                {children}
+              </Heading>
+            );
+          },
+          h2({ children, id }) {
+            return (
+              <Heading id={id} lvl="h2">
+                {children}
+              </Heading>
+            );
+          },
+          h3({ children, id }) {
+            return (
+              <Heading id={id} lvl="h3">
+                {children}
+              </Heading>
+            );
+          },
+          h4({ children, id }) {
+            return (
+              <Heading id={id} lvl="h4">
+                {children}
+              </Heading>
+            );
+          },
+          p({ children }) {
+            return <Paragraph>{children}</Paragraph>;
+          },
+          ul({ children }) {
+            if (!children) return null;
+            if (!Array.isArray(children)) return null;
+
+            const listItems = children.reduce((acc, child) => {
+              if (typeof child === "string") return acc;
+              acc.push(child.props.children);
+              return acc;
+            }, []);
+
+            return <List items={listItems} />;
+          },
+          ol({ children }) {
+            if (!children) return null;
+            if (!Array.isArray(children)) return null;
+
+            const listItems = children.reduce((acc, child) => {
+              if (typeof child === "string") return acc;
+              acc.push(child.props.children);
+              return acc;
+            }, []);
+
+            return <List items={listItems} />;
+          },
+        }}
+      >
+        <MDXRemote
+          components={{ Heading, Paragraph, Image, List, ContentBlock }}
+          {...source}
+        />
+      </MDXProvider>
     </>
   );
 }
@@ -41,11 +102,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { content, meta } = getPostFromSlug(slug);
   const mdxSource = await serialize(content, {
     mdxOptions: {
-      rehypePlugins: [
-        rehypeSlug,
-        [rehypeAutolinkHeadings, { behavior: "wrap" }],
-        rehypeHighlight,
-      ],
+      rehypePlugins: [rehypeSlug, rehypeHighlight],
     },
   });
 
