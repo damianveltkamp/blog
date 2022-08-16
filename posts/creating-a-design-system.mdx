@@ -1,0 +1,141 @@
+---
+title: Creating my design system
+tags:
+  - Design system
+  - Typescript
+  - Next
+  - React
+  - Emotion
+date: 2022-08-16
+excerpt: Why and how I created my design system
+---
+
+<ContentBlock>
+
+During the past few weeks, I have been building some personal websites, a portfolio, a blog, and a links webpage. To keep visual consistency across these three websites, I created a personal design system.
+
+</ContentBlock>
+
+<ContentBlock>
+
+## Core technologies I used
+
+To create this design system, I picked these core technologies:
+
+### Storybook
+
+Storybook is an open-source tool that helps you build UI components and pages in isolation. Storybook also streamlines the testing and documenting of your components.
+
+### Next
+
+Next is my web development framework of choice. I use Next for all of my websites. That is why I needed to incorporate Next components into my design system.
+
+### React
+
+React is my Javascript library of choice. I use React every day to build component-based user interfaces.
+
+### Typescript
+
+Typescript is a strongly typed programming language that builds upon Javascript. Typescript enables me to work more confidently and enhances my developer experience.
+
+### Emotion
+
+I used Emotion for all my styling purposes. Emotion enables CSS in Javascript styling.
+
+### Rollup
+
+I used Rollup for bundling my design system into CommonJS and ES modules.
+
+### Babel
+
+I had to use Babel to compile my Emotion CSS in JS solutions. Babel is great at compiling code into Javascript the browser understands.
+
+### SVGR
+
+I chose SVGR as a transformer for my svg's. SVGR creates react components that can be used inside the design system.
+
+### Verdaccio
+
+I used Verdaccio as a local private proxy registry, which I used for local testing.
+
+</ContentBlock>
+
+<ContentBlock>
+
+## Initial setup
+
+I followed the official [Storybook guide](https://storybook.js.org/blog/get-started-with-storybook-and-next-js/) on setting up Storybook with NextJS. This process is pretty straightforward. You start by creating a fresh NextJS Typescript project with NPX:
+
+```bash
+npx create-next-app@latest --typescript
+```
+
+After this process is done you initialize Storybook with NPX:
+
+```bash
+npx sb init --builder webpack5
+```
+
+</ContentBlock>
+
+<ContentBlock>
+
+## De-optimizing NextJS image component
+
+NextJS does a lot of optimizing for its Image component, but since Storybook runs in isolation it does not know what is happening.
+
+This is why we add the following code to our .storybook/preview.js file
+
+```js
+// .storybook/preview.js
+import * as NextImage from "next/image";
+
+const OriginalNextImage = NextImage.default;
+
+Object.defineProperty(NextImage, "default", {
+  configurable: true,
+  value: (props) => <OriginalNextImage {...props} unoptimized />,
+});
+```
+
+</ContentBlock>
+
+<ContentBlock>
+
+## Cleaning up the design system project
+
+The initial setup for the NextJS app created some folders and files that won't be used in the future, so I deleted these, for example, the global styles and pages directory.
+
+</ContentBlock>
+
+<ContentBlock>
+
+## Configuring Rollup
+
+In order to get everything bundled up correctly I used the following plugins:
+
+### @rollup/plugin-commonjs
+
+This plugin converts CommonJS modules to ES6.
+
+### @rollup/plugin-node-resolve
+
+This plugin locates modules for using third-party modules in node_modules
+
+### @svgr/rollup
+
+A plugin that helps integrate SVGR with Rollup.
+
+### rollup-plugin-peer-deps-external
+
+A plugin that externalizes peer dependencies out of the bundle.
+
+### rollup-plugin-postcss
+
+A plugin that handles the integration of PostCSS with Rollup.
+
+### rollup-plugin-typescript2
+
+A plugin that compiles Typescript into Javascript that keeps compiler errors.
+
+</ContentBlock>
