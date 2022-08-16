@@ -71,6 +71,7 @@ export default function PostPage({ post }: { post: MDXPost }) {
             return <Paragraph>{children}</Paragraph>;
           },
           a({ children, href }) {
+            /* TODO add logic to determine if href isExternal or not */
             return <Link text={(children as string) ?? ""} href={href ?? ""} />;
           },
           ul({ children }) {
