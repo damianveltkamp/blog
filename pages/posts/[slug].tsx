@@ -12,6 +12,7 @@ import {
   Heading,
   Paragraph,
   List,
+  Link,
 } from "@damianveltkamp/dvds";
 import { MDXProvider } from "@mdx-js/react";
 
@@ -68,6 +69,9 @@ export default function PostPage({ post }: { post: MDXPost }) {
           },
           p({ children }) {
             return <Paragraph>{children}</Paragraph>;
+          },
+          a({ children, href }) {
+            return <Link text={(children as string) ?? ""} href={href ?? ""} />;
           },
           ul({ children }) {
             if (!children) return null;

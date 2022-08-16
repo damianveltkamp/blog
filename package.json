@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@damianveltkamp/dvds": "^0.1.35",
+    "@damianveltkamp/dvds": "^0.1.38",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@mdx-js/react": "^2.1.2",

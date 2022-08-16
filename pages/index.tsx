@@ -5,7 +5,7 @@ import { ArticleCard, ContentBlock, Heading } from "@damianveltkamp/dvds";
 
 const Home = ({ postsMeta }: { postsMeta: PostMeta[] }) => {
   return (
-    <div>
+    <>
       <Head>
         <title>Damian Veltkamp webdeveloper blog</title>
         <meta
@@ -30,7 +30,7 @@ const Home = ({ postsMeta }: { postsMeta: PostMeta[] }) => {
           />
         ))}
       </ContentBlock>
-    </div>
+    </>
   );
 };
 

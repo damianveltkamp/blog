@@ -1,14 +1,16 @@
+import "../src/styles/fonts.css";
 import type { AppProps } from "next/app";
-import { BaseLayout } from "../src/templates/BaseLayout";
+import { Footer, Header, MainContainer, theme } from "@damianveltkamp/dvds";
 import { ThemeProvider } from "@emotion/react";
-import { theme } from "@damianveltkamp/dvds";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
-      <BaseLayout>
+      <Header />
+      <MainContainer>
         <Component {...pageProps} />
-      </BaseLayout>
+      </MainContainer>
+      <Footer />
     </ThemeProvider>
   );
 }
