@@ -6,10 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test-dvds": "yarn add --registry http://localhost:4873 @damianveltkamp/dvds"
   },
   "dependencies": {
-    "@damianveltkamp/dvds": "^0.1.41",
+    "@damianveltkamp/dvds": "^0.1.42",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@mdx-js/react": "^2.1.2",
