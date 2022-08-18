@@ -1,13 +1,14 @@
 ---
 title: Creating my design system
 tags:
-  - Design system
   - Typescript
   - Next
   - React
+  - Rollup
   - Emotion
 date: 2022-08-16
 excerpt: Why and how I created my design system
+draft: true
 ---
 
 <ContentBlock>
@@ -137,5 +138,92 @@ A plugin that handles the integration of PostCSS with Rollup.
 ### rollup-plugin-typescript2
 
 A plugin that compiles Typescript into Javascript that keeps compiler errors.
+
+Below you can see the rollup config I used:
+
+```js
+import commonjs from "@rollup/plugin-commonjs";
+import resolve from "@rollup/plugin-node-resolve";
+import typescript from "rollup-plugin-typescript2";
+import external from "rollup-plugin-peer-deps-external";
+import postcss from "rollup-plugin-postcss";
+import svgr from "@svgr/rollup";
+
+// Import your package json
+const packageJson = require("./package.json");
+
+// Extract directory name from string
+const dirname = (file) => {
+  const [root, folder] = file.split("/");
+  return `${root}/${folder}`;
+};
+
+const config = {
+  // Define entry point
+  input: "src/index.ts",
+  // Define output directories and options
+  output: [
+    {
+      dir: dirname(packageJson.main),
+      format: "cjs",
+      preserveModules: true,
+      preserveModulesRoot: "src",
+      sourcemap: true,
+    },
+    {
+      dir: dirname(packageJson.module),
+      format: "esm",
+      preserveModules: true,
+      preserveModulesRoot: "src",
+      sourcemap: true,
+    },
+  ],
+  // Add all dependencies as external so they do not compile into the bundle
+  external: Object.keys(packageJson.dependencies),
+  // Initialise your plugins
+  plugins: [
+    external(),
+    resolve(),
+    commonjs(),
+    typescript(),
+    svgr({ typescript: true }),
+    postcss(),
+  ],
+};
+
+export default config;
+```
+
+</ContentBlock>
+
+<ContentBlock>
+
+## Configuring Typescript
+
+Below you can see the tsconfig I used
+
+```json
+{
+  "compilerOptions": {
+    "rootDir": "src",
+    "target": "es5",
+    "module": "esnext",
+    "jsx": "react-jsx",
+    "sourceMap": true,
+    "outDir": "dist",
+    "strict": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "lib": ["dom", "es2019"],
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsxImportSource": "@emotion/react"
+  },
+  "include": ["custom.d.ts", "src"]
+}
+```
+
+Most important here is to define jsx to be react-jsx and include the custom.d.ts file in which you should define the types of your theme and other module-related typings.
 
 </ContentBlock>
