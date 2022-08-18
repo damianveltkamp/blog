@@ -13,6 +13,7 @@ import {
   Paragraph,
   List,
   Link,
+  DateLabel,
 } from "@damianveltkamp/dvds";
 import { MDXProvider } from "@mdx-js/react";
 
@@ -26,7 +27,7 @@ export type MDXPost = {
 
 export default function PostPage({ post }: { post: MDXPost }) {
   const { source, meta } = post;
-  const { title } = meta;
+  const { title, date, dateTime } = meta;
 
   return (
     <>
@@ -36,6 +37,7 @@ export default function PostPage({ post }: { post: MDXPost }) {
       </Head>
       <ContentBlock>
         <Heading lvl="h1">{title}</Heading>
+        <DateLabel dateTime={dateTime}>{date}</DateLabel>
       </ContentBlock>
       <MDXProvider
         components={{
