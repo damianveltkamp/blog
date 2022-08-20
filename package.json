@@ -10,7 +10,7 @@
     "test-dvds": "yarn add --registry http://localhost:4873 @damianveltkamp/dvds"
   },
   "dependencies": {
-    "@damianveltkamp/dvds": "^0.1.56",
+    "@damianveltkamp/dvds": "^1.0.0",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@mdx-js/react": "^2.1.2",
