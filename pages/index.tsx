@@ -1,12 +1,6 @@
 import Head from "next/head";
-import styled from "@emotion/styled";
 import { getAllPosts, PostMeta } from "../src/api";
-import {
-  ArticleCard,
-  ArticleCardContainer,
-  ContentBlock,
-  Heading,
-} from "@damianveltkamp/dvds";
+import { ArticleCard, Grid, ContentBlock, Heading } from "@damianveltkamp/dvds";
 
 const Home = ({ postsMeta }: { postsMeta: PostMeta[] }) => {
   return (
@@ -22,7 +16,7 @@ const Home = ({ postsMeta }: { postsMeta: PostMeta[] }) => {
       <ContentBlock>
         <Heading lvl="h1">Writing about what interesets me.</Heading>
       </ContentBlock>
-      <ArticleCardContainer>
+      <Grid columns={1}>
         {postsMeta.map((post) => (
           <ArticleCard
             title={post.title}
@@ -34,7 +28,7 @@ const Home = ({ postsMeta }: { postsMeta: PostMeta[] }) => {
             key={post.slug}
           />
         ))}
-      </ArticleCardContainer>
+      </Grid>
     </>
   );
 };
