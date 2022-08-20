@@ -14,6 +14,7 @@ import {
   List,
   Link,
   DateLabel,
+  Article,
 } from "@damianveltkamp/dvds";
 import { MDXProvider } from "@mdx-js/react";
 
@@ -35,75 +36,79 @@ export default function PostPage({ post }: { post: MDXPost }) {
         <title>{title}</title>
         <meta name="description" content={`Blog post about ${title}`} />
       </Head>
-      <ContentBlock>
-        <Heading lvl="h1">{title}</Heading>
-        <DateLabel dateTime={dateTime}>{date}</DateLabel>
-      </ContentBlock>
-      <MDXProvider
-        components={{
-          h1({ children, id }) {
-            return (
-              <Heading id={id} lvl="h1">
-                {children}
-              </Heading>
-            );
-          },
-          h2({ children, id }) {
-            return (
-              <Heading id={id} lvl="h2">
-                {children}
-              </Heading>
-            );
-          },
-          h3({ children, id }) {
-            return (
-              <Heading id={id} lvl="h3">
-                {children}
-              </Heading>
-            );
-          },
-          h4({ children, id }) {
-            return (
-              <Heading id={id} lvl="h4">
-                {children}
-              </Heading>
-            );
-          },
-          p({ children }) {
-            return <Paragraph>{children}</Paragraph>;
-          },
-          a({ children, href }) {
-            /* TODO add logic to determine if href isExternal or not */
-            return <Link text={(children as string) ?? ""} href={href ?? ""} />;
-          },
-          ul({ children }) {
-            if (!children) return null;
-            if (!Array.isArray(children)) return null;
+      <Article>
+        <ContentBlock>
+          <Heading lvl="h1">{title}</Heading>
+          <DateLabel dateTime={dateTime}>{date}</DateLabel>
+        </ContentBlock>
+        <MDXProvider
+          components={{
+            h1({ children, id }) {
+              return (
+                <Heading id={id} lvl="h1">
+                  {children}
+                </Heading>
+              );
+            },
+            h2({ children, id }) {
+              return (
+                <Heading id={id} lvl="h2">
+                  {children}
+                </Heading>
+              );
+            },
+            h3({ children, id }) {
+              return (
+                <Heading id={id} lvl="h3">
+                  {children}
+                </Heading>
+              );
+            },
+            h4({ children, id }) {
+              return (
+                <Heading id={id} lvl="h4">
+                  {children}
+                </Heading>
+              );
+            },
+            p({ children }) {
+              return <Paragraph>{children}</Paragraph>;
+            },
+            a({ children, href }) {
+              /* TODO add logic to determine if href isExternal or not */
+              return (
+                <Link text={(children as string) ?? ""} href={href ?? ""} />
+              );
+            },
+            ul({ children }) {
+              if (!children) return null;
+              if (!Array.isArray(children)) return null;
 
-            const listItems = children.reduce((acc, child) => {
-              if (typeof child === "string") return acc;
-              acc.push(child.props.children);
-              return acc;
-            }, []);
+              const listItems = children.reduce((acc, child) => {
+                if (typeof child === "string") return acc;
+                acc.push(child.props.children);
+                return acc;
+              }, []);
 
-            return <List items={listItems} />;
-          },
-          ol({ children }) {
-            if (!children) return null;
-            if (!Array.isArray(children)) return null;
+              return <List items={listItems} />;
+            },
+            ol({ children }) {
+              if (!children) return null;
+              if (!Array.isArray(children)) return null;
 
-            const listItems = children.reduce((acc, child) => {
-              if (typeof child === "string") return acc;
-              acc.push(child.props.children);
-              return acc;
-            }, []);
+              const listItems = children.reduce((acc, child) => {
+                if (typeof child === "string") return acc;
+                acc.push(child.props.children);
+                return acc;
+              }, []);
 
-            return <List items={listItems} />;
-          },
-        }}
-      >
-        <MDXRemote components={{ ContentBlock, Image }} {...source} />
-      </MDXProvider>
+              return <List items={listItems} />;
+            },
+          }}
+        >
+          <MDXRemote components={{ ContentBlock, Image }} {...source} />
+        </MDXProvider>
+      </Article>
     </>
   );
 }
